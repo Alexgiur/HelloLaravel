@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mettre à jour l'article {{ $article->id }}</title>
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'Mettre à jour article')
+
+@section('main')
 <h1>Mettre à jour l'article {{ $article->id }}</h1>
 
 <form action="/articles/{{ $article->id }}" method="POST">
@@ -25,6 +22,4 @@
     <br><br>
     <button name="btnCreate" type="submit">Mettre à jour</button>
 </form>
-
-</body>
-</html>
+@endsection('main')

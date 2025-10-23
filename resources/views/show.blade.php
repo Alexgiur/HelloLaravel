@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Un seul article : {{ $article->id }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+@extends('layout')
 
-</head>
-<body>
+@section('title', 'Voir un article')
+
+@section('main')
 <h1>Un seul article : {{ $article->id }}</h1>
 <p>Titre : {{ $article->title }}</p>
 <p>Date publication : {{ $article->published_at }}</p>
@@ -22,5 +17,4 @@
     @method('DELETE')
     <button class="btn btn-danger">Supprimer</button>
 </form>
-</body>
-</html>
+@endsection('main')
