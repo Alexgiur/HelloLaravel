@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -21,33 +22,14 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/articles', function () {
-    $articles = Article::all();
+Route::resource('articles', ArticleController::class);
 
-    return view('index', [
-        'articles' => $articles
-    ]);
-});
-
-
-Route::get('/articles/create', function() {
-    return view('create');
-});
-
-
-Route::get('/articles/{id}', function ($id) {
-    $article = Article::findOrFail($id);
-
-    return view('show', compact('article')); //cherche dans le code précédent une variable du même nom et fais pareil que les autres return view, attend une chaîne de caractères en paramètre
-});
-
-
-Route::post('/articles', function() {
-    $a = new Article;
-    $a->title = request('title');
-    $a->content = request('content');
-    $a->picture = request('picture');
-    $a->published_at = date('Y-m-d h:i:s');
-    $a->save();
-    return redirect('/articles/'.$a->id);
-});
+/*
+Route::get('/articles', [ArticleController::class, 'index']);
+Route::get('/articles/create', [ArticleController::class, 'create']);
+Route::get('/articles/{article}', [ArticleController::class, 'show']);//cherche dans le code précédent une variable du même nom et fais pareil que les autres return view, attend une chaîne de caractères en paramètre
+Route::post('/articles', [ArticleController::class, 'store']);
+Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
+Route::patch('/articles/{article}', [ArticleController::class, 'update']);
+Route::delete('/articles/{article}', [ArticleController::class, 'destroy']);
+*/
