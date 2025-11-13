@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('neural-glass')
 
 @section('title', 'Créer un article')
 
